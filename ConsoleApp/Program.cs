@@ -6,7 +6,8 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var hellow = new Hellow("C#");
+            hellow.ConsoleWrite();
         }
     }
 }
