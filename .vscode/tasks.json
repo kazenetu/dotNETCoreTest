@@ -3,7 +3,6 @@
     "command": "dotnet",
     "isShellCommand": true,
     "args": [],
-    "runner": "terminal",   
     "tasks": [
         {
             "taskName": "build",
@@ -13,5 +12,9 @@
             "isBuildCommand": true,
             "problemMatcher": "$msCompile"
         }
-    ]
+    ],
+    "windows": {  // Windows固有の設定
+        "command": "cmd", // cmd.exeを実行
+        "args": [ "/C", "chcp 65001 && dotnet"] // /Cオプションで第二引数のコマンドを実行
+    }                                          // chcp 65001 の後に && で続けてdotnetを実行するよう指定
 }
