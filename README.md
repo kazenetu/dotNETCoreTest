@@ -12,6 +12,9 @@ Windows10 Home
 [microsoftからダウンロード](https://www.microsoft.com/ja-jp/dev/products/code-vs.aspx)
  1. Visual Studio Codeを起動し、Visual Studio Codeの拡張機能(C#)をインストール  
 ![installcsharp.png](installcsharp.png)
+ 1. 拡張機能「XMLドキュメントコメント」をインストール  
+ [C# XML Documentation Comments](https://marketplace.visualstudio.com/items?itemName=k--kato.docomment)
+
 
 ### Visual Studio Codeの設定
 1. Visual Studio Codeを起動する
@@ -45,7 +48,10 @@ dotnet new console -o ConsoleApp
 * csファイル追加だけでちゃんとビルド対象になる  
   すごい。
 * 「///」+改行でメソッドコメントが自動生成できない  
-  地味に困った。カスタマイズがあるのかな。
+  地味に困った。カスタマイズがあるのかな。  
+  [追記]ちょうどいいプラグインがあった。  
+  [C# XML Documentation Comments](https://marketplace.visualstudio.com/items?itemName=k--kato.docomment)
+  
 
 ## TODO
 - [X] ネイティブな実行ファイル(exe)作成方法  
