@@ -22,10 +22,11 @@ namespace ConsoleApp
     }
 
     /// <summary>
-    /// コンソールに表示名を出力する
-    /// </summary>  
-    public void ConsoleWrite(){
-      Console.WriteLine(string.Format("Hello {0}!",this.name));
+    /// 情報付き表示名を出力する
+    /// </summary>
+    /// <returns>情報付き表示名</returns>
+    public string GetFormatName(){
+      return string.Format("Hello {0}!",this.name);
     }
 
   }

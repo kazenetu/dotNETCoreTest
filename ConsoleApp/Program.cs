@@ -7,7 +7,7 @@ namespace ConsoleApp
         static void Main(string[] args)
         {
             var hellow = new Hellow("C#");
-            hellow.ConsoleWrite();
+            Console.WriteLine(hellow.GetFormatName());
         }
     }
 }
