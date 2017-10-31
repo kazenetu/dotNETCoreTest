@@ -58,3 +58,7 @@ dotnet new console -o ConsoleApp
 [[.NET Core].NET Coreで実行ファイルを作成する](https://qiita.com/yaegaki/items/bdf529f07552d72bc6e5)
 - [ ] Web API 作成  
 [Linux、macOS、Windows で ASP.NET Core MVC と Visual Studio Code を利用して Web API を作成する](https://docs.microsoft.com/ja-jp/aspnet/core/tutorials/web-api-vsc)
+
+## 参考サイト
+* [[.NET Core].NET Coreで実行ファイルを作成する](https://qiita.com/yaegaki/items/bdf529f07552d72bc6e5)
+* [Visual Studio Codeタスクのdotnetコマンド出力を文字化けしないようにする](https://qiita.com/masaru_b_cl/items/705b75d256b11cb82feb)
