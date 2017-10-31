@@ -3,6 +3,7 @@
     "command": "dotnet",
     "isShellCommand": true,
     "args": [],
+    "runner": "terminal",   
     "tasks": [
         {
             "taskName": "build",
