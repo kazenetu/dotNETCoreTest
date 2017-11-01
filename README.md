@@ -49,9 +49,12 @@ dotnet new console -o ConsoleApp
   すごい。
 * 「///」+改行でメソッドコメントが自動生成できない  
   地味に困った。カスタマイズがあるのかな。  
-  [追記]ちょうどいいプラグインがあった。  
+  [2017/10/31 追記]ちょうどいいプラグインがあった。  
   [C# XML Documentation Comments](https://marketplace.visualstudio.com/items?itemName=k--kato.docomment)
-  
+* DebugConsoleで日本語が文字化けする。  
+  (実行時にShiftJISで出力されてる？)  
+  プログラムに```Console.OutputEncoding =System.Text.Encoding.UTF8;```を追加すると正しく表示される。  
+  これでよいのかな？
 
 ## TODO
 - [X] ネイティブな実行ファイル(exe)作成方法  
