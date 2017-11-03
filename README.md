@@ -76,6 +76,7 @@ Windows10 Home
 [Linux、macOS、Windows で ASP.NET Core MVC と Visual Studio Code を利用して Web API を作成する](https://docs.microsoft.com/ja-jp/aspnet/core/tutorials/web-api-vsc)
 
 ## 参考サイト
+* [Create .NET apps faster with NuGet](https://www.nuget.org/)
 * [Qiita:[.NET Core].NET Coreで実行ファイルを作成する](https://qiita.com/yaegaki/items/bdf529f07552d72bc6e5)
 * [Qiita:Visual Studio Codeタスクのdotnetコマンド出力を文字化けしないようにする](https://qiita.com/masaru_b_cl/items/705b75d256b11cb82feb)
 * [Qiita:xUnit.net でユニットテストを始める](https://qiita.com/takutoy/items/84fa6498f0726418825d)
