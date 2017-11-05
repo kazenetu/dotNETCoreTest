@@ -25,8 +25,9 @@ namespace ConsoleApp
     /// 情報付き表示名を出力する
     /// </summary>
     /// <returns>情報付き表示名</returns>
-    public string GetFormatName(){
-      return string.Format("こんにちは {0}!",this.name);
+    public string GetFormatName()
+    {
+      return string.Format("こんにちは {0}!", this.name);
     }
 
   }
