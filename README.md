@@ -82,6 +82,12 @@ Windows10 Home
 　[2017/11/04 追記]ADO.NETで接続できるものがあった。  
   [Microsoft.Data SQLite](https://www.nuget.org/packages/Microsoft.Data.SQLite/)  
   [Microsoft.Data SQLite APIリファレンス](https://docs.microsoft.com/ja-jp/dotnet/api/microsoft.data.sqlite?view=msdata-sqlite-2.0.0)
+* デバッグコンソールからモジュールロードを非表示に設定するには  
+   launch.jsonのconfigurations以下のnameに下記を追加する  
+`"logging":{
+    "moduleLoad": false
+}`
+
 
 ## TODO
 - [X] ネイティブな実行ファイル(exe)作成方法  
