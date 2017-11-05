@@ -44,10 +44,5 @@ namespace ConsoleApp.Interfaces
     /// </summary>
     void Rollback();
 
-    /// <summary>
-    /// 解放処理
-    /// </summary>
-    void Dispose();
-
   }
 }
