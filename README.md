@@ -95,6 +95,9 @@ Windows10 Home
 * nugetでのパッケージ取得
   * [Create .NET apps faster with NuGet](https://www.nuget.org/)
   * [Getting Started with EF Core on .NET Core Console App with a New database](https://docs.microsoft.com/en-us/ef/core/get-started/netcore/new-db-sqlite)
+  * DB関連
+    * [Microsoft.Data SQLite](https://www.nuget.org/packages/Microsoft.Data.SQLite/)  
+    * [Npgsql](https://www.nuget.org/packages/Npgsql/)
 * リソースファイル追加
   * [project.json プロパティと csproj プロパティの間のマッピング](https://docs.microsoft.com/ja-jp/dotnet/core/tools/project-json-to-csproj)
 * 特定OS用ネイティブアプリの作成
