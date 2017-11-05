@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using ConsoleApp.Interfaces;
 using Microsoft.Data.Sqlite;
 
 namespace ConsoleApp.DB
@@ -8,7 +9,7 @@ namespace ConsoleApp.DB
     /// <summary>
     /// SQLiteラッパークラス
     /// </summary>
-    public class SQLiteDB : IDisposable
+    public class SQLiteDB : IDatabase
     {
         #region プライベートフィールド
 
