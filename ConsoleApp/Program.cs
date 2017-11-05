@@ -15,10 +15,10 @@ namespace ConsoleApp
       Console.WriteLine(hellow.GetFormatName());
 
       // SQL発行
-      Console.WriteLine(selectSql());
+      Console.WriteLine(selectSqlBySQLite());
     }
 
-    private static string selectSql()
+    private static string selectSqlBySQLite()
     {
       var resourcePath = AppContext.BaseDirectory;
       resourcePath = Path.Combine(resourcePath, "Resource/Test.db");
@@ -31,6 +31,7 @@ namespace ConsoleApp
         sql.AppendLine("  USER_NAME");
         sql.AppendLine("from");
         sql.AppendLine("  MT_USER");
+        sql.AppendLine("limit 1");
 
         var result = db.Fill(sql.ToString());
         if (result.Rows.Count <= 0)
