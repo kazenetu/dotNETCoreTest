@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text;
 using ConsoleApp.DB;
+using ConsoleApp.Interfaces;
 
 namespace ConsoleApp
 {
@@ -14,10 +15,19 @@ namespace ConsoleApp
       var hellow = new Hellow("C#");
       Console.WriteLine(hellow.GetFormatName());
 
-      // SQL発行
+      // SQL発行:SQLite
+      Console.Write("SQLite >");
       Console.WriteLine(selectSqlBySQLite());
+
+      // SQL発行:Postgres
+      Console.Write("Postgres >");
+      Console.WriteLine(selectSqlByPostgres());
     }
 
+    /// <summary>
+    /// SelectSQL発行サンプル：SQLite
+    /// </summary>
+    /// <returns>ユーザー名</returns>
     private static string selectSqlBySQLite()
     {
       var resourcePath = AppContext.BaseDirectory;
@@ -26,6 +36,34 @@ namespace ConsoleApp
       // SQL実行
       using (var db = new SQLiteDB("Data Source=" + resourcePath))
       {
+        return  getUserName(db);
+      }
+    }
+
+    /// <summary>
+    /// SelectSQL発行サンプル：Postgres
+    /// </summary>
+    /// <returns>ユーザー名</returns>
+    private static string selectSqlByPostgres()
+    {
+        // 接続文字列作成
+        var connectionString = string.Format("Server={0};Port=5432;User Id={1};Password={2};Database={3}",
+            "localhost", "test", "test","test");
+
+      // SQL実行
+      using (var db = new PostgreSQLDB(connectionString))
+      {
+        return  getUserName(db);
+      }
+    }
+
+    /// <summary>
+    /// ユーザー名取得用Select発行
+    /// </summary>
+    /// <param name="db">databaseインスタンス</param>
+    /// <returns>ユーザー名</returns>
+    private static string getUserName(IDatabase db)
+    {
         var sql = new StringBuilder();
         sql.AppendLine("select");
         sql.AppendLine("  USER_NAME");
@@ -40,7 +78,6 @@ namespace ConsoleApp
         }
 
         return result.Rows[0]["USER_NAME"].ToString();
-      }
     }
   }
 }
