@@ -104,6 +104,8 @@ Windows10 Home
   * DB関連
     * [Microsoft.Data SQLite](https://www.nuget.org/packages/Microsoft.Data.SQLite/)  
     * [Npgsql](https://www.nuget.org/packages/Npgsql/)
+  * ログ関連
+    * [ASP.NET Core でのログ記録の概要](https://docs.microsoft.com/ja-jp/aspnet/core/fundamentals/logging?tabs=aspnetcore2x)
 * リソースファイル追加
   * [project.json プロパティと csproj プロパティの間のマッピング](https://docs.microsoft.com/ja-jp/dotnet/core/tools/project-json-to-csproj)
 * 特定OS用ネイティブアプリの作成
