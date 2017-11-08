@@ -3,6 +3,10 @@ using System.IO;
 using System.Text;
 using ConsoleApp.DB;
 using ConsoleApp.Interfaces;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 
 namespace ConsoleApp
 {
@@ -22,6 +26,21 @@ namespace ConsoleApp
       // SQL発行:Postgres
       Console.Write("Postgres >");
       Console.WriteLine(selectSqlByPostgres());
+
+      // LogTest
+      logTest();
+    }
+
+    private static void logTest()
+    {
+      var loggerFactory = new LoggerFactory();
+      loggerFactory .AddProvider(new AppLoggerProvider());
+
+      
+      var logger = loggerFactory.CreateLogger("test");
+      logger.LogWarning(new EventId(999),"test!");
+      logger.LogError(new EventId(999),"test! {0}",new Exception("例外エラーテスト"));
+
     }
 
     /// <summary>
