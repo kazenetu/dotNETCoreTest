@@ -85,8 +85,8 @@ Windows10 Home
   これでよいのかな？
 * DB接続はEF経由じゃないとダメ？  
   [nuget.org](https://www.nuget.org/)には.NetCore用のDBのServer providerが少ないのだけれど……  
-  [Getting Started with EF Core on .NET Core Console App with a New database](https://docs.microsoft.com/en-us/ef/core/get-started/netcore/new-db-sqlite)
-　[2017/11/04 追記]ADO.NETで接続できるものがあった。  
+  [Getting Started with EF Core on .NET Core Console App with a New database](https://docs.microsoft.com/en-us/ef/core/get-started/netcore/new-db-sqlite)  
+[2017/11/04 追記]ADO.NETで接続できるものがあった。  
   [Microsoft.Data SQLite](https://www.nuget.org/packages/Microsoft.Data.SQLite/)  
   [Microsoft.Data SQLite APIリファレンス](https://docs.microsoft.com/ja-jp/dotnet/api/microsoft.data.sqlite?view=msdata-sqlite-2.0.0)
 * デバッグコンソールからモジュールロードを非表示に設定するには  
@@ -94,6 +94,7 @@ Windows10 Home
 `"logging":{
     "moduleLoad": false
 }`
+* ソリューション作っておけばよかった……
 
 
 ## TODO
