@@ -33,11 +33,9 @@ namespace ConsoleApp
 
     private static void logTest()
     {
-      var loggerFactory = new LoggerFactory();
-      loggerFactory .AddProvider(new AppLoggerProvider());
-
+      var loggerFactory = new LoggerFactory().AddConsole();
       
-      var logger = loggerFactory.CreateLogger("test");
+      var logger = loggerFactory.CreateLogger<Program>();
       logger.LogWarning(new EventId(999),"test!");
       logger.LogError(new EventId(999),"test! {0}",new Exception("例外エラーテスト"));
 
