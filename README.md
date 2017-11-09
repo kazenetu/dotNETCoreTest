@@ -117,6 +117,7 @@ Windows10 Home
   * ログ関連
     * [ASP.NET Core でのログ記録の概要](https://docs.microsoft.com/ja-jp/aspnet/core/fundamentals/logging?tabs=aspnetcore2x)
     * [Entity Framework Core - SQLをログで確認する(いちろぐ)](http://ichiroku11.hatenablog.jp/entry/2017/10/02/221329)
+    * [Essential .NET - .NET Core によるログ記録](https://msdn.microsoft.com/ja-jp/magazine/mt694089.aspx)
 * リソースファイル追加
   * [project.json プロパティと csproj プロパティの間のマッピング](https://docs.microsoft.com/ja-jp/dotnet/core/tools/project-json-to-csproj)
 * 特定OS用ネイティブアプリの作成
