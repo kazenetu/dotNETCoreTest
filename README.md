@@ -61,11 +61,13 @@ Windows10 Home
 1. ターミナルで「dotnet add package Microsoft.Data.SQLite --version 2.0.0」を実行
 1. VisualStudioCodeでrestoreするか聞いてくるのでRestoreをクリック
 
-### TODO ログ設定(書きかけ)
+### ログ設定(書きかけ)
 1. ターミナルで`dotnet add package Microsoft.Extensions.Logging --version 2.0.0`を実行  
    ※インストール対象[Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/)
 1. ターミナルで`dotnet add package Microsoft.Extensions.Configuration --version 2.0.0`を実行  
    ※インストール対象[Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/)
+1. ターミナルで`dotnet add package Microsoft.Extensions.Logging.Console --version 2.0.0`を実行  
+   ※インストール対象[Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/)
 
 
 ### とりえず使ってみた感想
