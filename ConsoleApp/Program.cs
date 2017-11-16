@@ -23,9 +23,11 @@ namespace ConsoleApp
       Console.Write("SQLite >");
       Console.WriteLine(selectSqlBySQLite());
 
-      // SQL発行:Postgres
-      Console.Write("Postgres >");
-      Console.WriteLine(selectSqlByPostgres());
+      if(args.Length > 0 && args[0] == "postgres"){
+        // SQL発行:Postgres
+        Console.Write("Postgres >");
+        Console.WriteLine(selectSqlByPostgres());
+      }
 
       // LogTest
       logTest();
@@ -33,12 +35,11 @@ namespace ConsoleApp
 
     private static void logTest()
     {
-      var loggerFactory = new LoggerFactory().AddConsole();
-      
-      var logger = loggerFactory.CreateLogger<Program>();
-      logger.LogWarning(new EventId(999),"test!");
-      logger.LogError(new EventId(999),"test! {0}",new Exception("例外エラーテスト"));
-
+      using(var loggerFactory = new LoggerFactory().AddConsole()){
+        var logger = loggerFactory.CreateLogger<Program>();
+        logger.LogWarning(new EventId(999),"test!");
+        logger.LogError(new EventId(999),"test! {0}",new Exception("例外エラーテスト"));
+      }
     }
 
     /// <summary>
