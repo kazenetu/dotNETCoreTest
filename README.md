@@ -61,13 +61,37 @@ Windows10 Home
 1. ターミナルで「dotnet add package Microsoft.Data.SQLite --version 2.0.0」を実行
 1. VisualStudioCodeでrestoreするか聞いてくるのでRestoreをクリック
 
-### ログ設定(書きかけ)
+### ログ設定(コンソールアプリで実行する場合)
 1. ターミナルで`dotnet add package Microsoft.Extensions.Logging --version 2.0.0`を実行  
    ※インストール対象[Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/)
-1. ターミナルで`dotnet add package Microsoft.Extensions.Configuration --version 2.0.0`を実行  
-   ※インストール対象[Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/)
 1. ターミナルで`dotnet add package Microsoft.Extensions.Logging.Console --version 2.0.0`を実行  
    ※インストール対象[Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/)
+1. コンソールアプリで利用する場合は下記のように実装する
+```
+using Microsoft.Extensions.Logging;
+
+namespace ConsoleApp
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      using(var loggerFactory = new LoggerFactory().AddConsole()){
+        var logger = loggerFactory.CreateLogger<Program>();
+        logger.LogWarning(new EventId(999),"test!");
+        logger.LogError(new EventId(999),"test! {0}",new Exception("例外エラーテスト"));
+      }
+    }
+  }
+}
+
+// 出力結果
+//warn: ConsoleApp.Program[999]
+//      test!
+//fail: ConsoleApp.Program[999]
+//      test! System.Exception: 例外エラーテスト
+
+```
 
 
 ### とりえず使ってみた感想
