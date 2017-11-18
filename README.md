@@ -127,7 +127,7 @@ namespace ConsoleApp
 - [X] ネイティブな実行ファイル(exe)作成方法  
 [Qiita:[.NET Core].NET Coreで実行ファイルを作成する](https://qiita.com/yaegaki/items/bdf529f07552d72bc6e5)
 - [X] DB接続
-- [ ] ログ出力
+- [X] ログ出力
 - [ ] Web API 作成  
 [Linux、macOS、Windows で ASP.NET Core MVC と Visual Studio Code を利用して Web API を作成する](https://docs.microsoft.com/ja-jp/aspnet/core/tutorials/web-api-vsc)
 
