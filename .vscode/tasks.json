@@ -1,0 +1,37 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "buildConsole",
+      "command": "dotnet build ${workspaceFolder}/ConsoleApp/ConsoleApp.csproj",
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "test",
+      "command": "dotnet test ${workspaceRoot}/ConsoleApp.Test/ConsoleApp.Test.csproj",
+      "type": "shell",
+      "group": "test",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "buildWeb",
+      "command": "dotnet build ${workspaceFolder}/WebApp/WebApiSample/WebApiSample.csproj",
+      "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}
