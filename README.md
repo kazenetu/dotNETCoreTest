@@ -93,6 +93,17 @@ namespace ConsoleApp
 
 ```
 
+### ソリューションとWebAPIプロジェクトを作成、設定する
+1. ターミナル(コマンドプロンプト)で  
+   `dotnet new sln -o WebApp` 
+   を実行する
+1. `cd .\WebApp\`  
+   を実行する
+1.  `dotnet new webapi -o WebApiSample`  
+   を実行する
+1. `dotnet sln WebApp.sln add WebApiSample/WebApiSample.csproj`
+   を実行する
+
 
 ### とりえず使ってみた感想
 * 「定義に移動」はVisualStudioと同じようにF12。  
