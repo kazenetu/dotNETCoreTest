@@ -94,14 +94,18 @@ namespace ConsoleApp
 ```
 
 ### ソリューションとWebAPIプロジェクトを作成、設定する
-1. ターミナル(コマンドプロンプト)で  
+1. ソリューションフォルダを作成する  
+   ターミナル(コマンドプロンプト)で  
    `dotnet new sln -o WebApp` 
    を実行する
-1. `cd .\WebApp\`  
+1. ソリューションフォルダに移動する  
+   `cd .\WebApp\`  
    を実行する
-1.  `dotnet new webapi -o WebApiSample`  
+1. WebAPIプロジェクトを作成する  
+   `dotnet new webapi -o WebApiSample`  
    を実行する
-1. `dotnet sln WebApp.sln add WebApiSample/WebApiSample.csproj`
+1. WebAPIプロジェクトをソリューションフォルダを追加する  
+   `dotnet sln WebApp.sln add WebApiSample/WebApiSample.csproj`
    を実行する
 
 
