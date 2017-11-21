@@ -33,8 +33,8 @@ namespace WebApiSample
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseMvc();
+            app.UseStaticFiles();
         }
     }
 }
