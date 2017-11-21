@@ -41,7 +41,7 @@
       "preLaunchTask": "buildWeb",
       "program": "${workspaceFolder}/WebApp/WebApiSample/bin/Debug/netcoreapp2.0/WebApiSample.dll",
       "args": [],
-      "cwd": "${workspaceFolder}",
+      "cwd": "${workspaceFolder}/WebApp/WebApiSample",
       "stopAtEntry": false,
       "internalConsoleOptions": "openOnSessionStart",
       "launchBrowser": {
