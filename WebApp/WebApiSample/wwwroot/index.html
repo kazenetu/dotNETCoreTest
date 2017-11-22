@@ -35,7 +35,9 @@ angular.module('App').controller('sample',
 
             var result = webApiService.get('Values', {  }
             ,function (response) {
-                alert(response.value);
+                if('value' in response){
+                    alert('value:' + response.value);
+                }
             });
         }
     }
