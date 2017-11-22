@@ -11,10 +11,11 @@ namespace WebApiSample.Controllers
     {
         // GET api/values
         [HttpGet]
-        //public IEnumerable<string> Get()
-        public string Get()
+        //public JsonResult<string,string> Get()
+        public JsonResult Get()
         {
-            return "{\"value\":\"aaa\"}";
+            var result = new Dictionary<string,string>(){{"value","aaa"}};
+            return Json(result);
         }
 
         // GET api/values/5
