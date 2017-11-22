@@ -34,6 +34,11 @@ namespace WebApiSample
                 app.UseDeveloperExceptionPage();
             }
             app.UseMvc();
+
+            // 静的ファイルのデフォルト設定を有効にする
+            app.UseDefaultFiles();
+
+            // 静的ファイルを使用する
             app.UseStaticFiles();
         }
     }
