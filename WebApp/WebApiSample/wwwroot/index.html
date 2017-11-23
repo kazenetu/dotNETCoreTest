@@ -22,16 +22,16 @@
 	<script src="assets/app.js"></script>
     <script src="assets/common/service/webApiService.js"></script>
 
-    <div  ng-controller="sample">
-        <button data-ng-click="postButton()">POSTTEST</button>
+    <div  ng-controller="sample as ctrl">
+        <button data-ng-click="ctrl.postButton()">POSTTEST</button>
     </div>
     
     <script>
 
 angular.module('App').controller('sample',
-    function ($scope,webApiService) {
+    function (webApiService) {
 
-        $scope.postButton = function () {
+        this.postButton = function () {
 
             var result = webApiService.get('Values', {  }
             ,function (response) {
