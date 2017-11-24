@@ -23,7 +23,7 @@
     <script src="assets/common/service/webApiService.js"></script>
 
     <div  data-ng-controller="sample as ctrl">
-        <button data-ng-click="ctrl.postButton()">POSTTEST</button>
+        <button data-ng-click="ctrl.getButton()">GETTEST</button>
     </div>
     
     <script>
@@ -31,7 +31,7 @@
 angular.module('App').controller('sample',
     function (webApiService) {
 
-        this.postButton = function () {
+        this.getButton = function () {
 
             var result = webApiService.get('Values', {  }
             ,function (response) {
