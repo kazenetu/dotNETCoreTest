@@ -27,8 +27,19 @@ namespace WebApiSample.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public JsonResult Post([FromBody]Dictionary<string,string> param)
         {
+            var data = new Dictionary<string,string>();
+            
+            foreach (var key in param.Keys)
+            {
+                data.Add(string.Format("param_{0}",key),param[key]);
+            }
+
+            var result = new Dictionary<string,Dictionary<string,string>>();
+            result.Add("value",data);
+
+            return Json(result);
         }
 
         // PUT api/values/5

@@ -23,7 +23,12 @@
     <script src="assets/common/service/webApiService.js"></script>
 
     <div  data-ng-controller="sample as ctrl">
-        <button data-ng-click="ctrl.getButton()">GETTEST</button>
+        <div>
+            <button data-ng-click="ctrl.getButton()">GETTEST</button>
+        </div>
+        <div>
+            <button data-ng-click="ctrl.postButton()">POSTTEST</button>
+        </div>
     </div>
     
     <script>
@@ -38,6 +43,19 @@ angular.module('App').controller('sample',
                 if('value' in response){
                     alert('value:' + response.value);
                 }
+            });
+        }
+
+        this.postButton = function () {
+
+            var result = webApiService.post('Values', {value:'test',param:'1' }
+            ,function (response) {
+                var message = '';
+                for(key in response.value){
+                    message  += (key + "=" + response.value[key]);
+                    message  += "\n"
+                }
+                alert(message);
             });
         }
     }
