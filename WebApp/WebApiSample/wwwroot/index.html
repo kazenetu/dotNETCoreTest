@@ -48,7 +48,7 @@ angular.module('App').controller('sample',
 
         this.postButton = function () {
 
-            var result = webApiService.post('Values', {value:'test',param:'1' }
+            var result = webApiService.post('Values', {value:'test',param:['1','2'] }
             ,function (response) {
                 var message = '';
                 for(key in response.value){
