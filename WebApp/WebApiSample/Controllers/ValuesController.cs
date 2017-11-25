@@ -27,16 +27,16 @@ namespace WebApiSample.Controllers
 
         // POST api/values
         [HttpPost]
-        public JsonResult Post([FromBody]Dictionary<string,string> param)
+        public JsonResult Post([FromBody]Dictionary<string,object> param)
         {
-            var data = new Dictionary<string,string>();
+            var data = new Dictionary<string,object>();
             
             foreach (var key in param.Keys)
             {
                 data.Add(string.Format("param_{0}",key),param[key]);
             }
 
-            var result = new Dictionary<string,Dictionary<string,string>>();
+            var result = new Dictionary<string,Dictionary<string,object>>();
             result.Add("value",data);
 
             return Json(result);
