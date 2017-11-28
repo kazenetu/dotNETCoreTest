@@ -19,13 +19,9 @@ namespace WebApiSample.Controllers
     {
       var data = new Dictionary<string, object>();
 
-      // TODO DatabaseFactoryクラス作成
-      var resourcePath = AppContext.BaseDirectory;
-      resourcePath = Path.Combine(resourcePath, "Resource/Test.db");
-
       // SQL実行
       var userName = string.Empty;
-      using (var db = new SQLiteDB("Data Source=" + resourcePath) as IDatabase)
+      using (var db = DatabaseFactory.Create())
       {
         userName = Models.Users.getUserName(db, param["userID"].ToString());
       }
