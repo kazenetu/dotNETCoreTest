@@ -159,6 +159,7 @@ namespace ConsoleApp
     * [Essential .NET - .NET Core によるログ記録](https://msdn.microsoft.com/ja-jp/magazine/mt694089.aspx)
 * リソースファイル追加
   * [project.json プロパティと csproj プロパティの間のマッピング](https://docs.microsoft.com/ja-jp/dotnet/core/tools/project-json-to-csproj)
+  * [Qiita:ASP.NET Core MVC における構成ファイル appsettings.json からの値取得](https://qiita.com/hiromasa-masuda/items/d7e33b20d3eedee771f4)
 * 特定OS用ネイティブアプリの作成
   * [Qiita:[.NET Core].NET Coreで実行ファイルを作成する](https://qiita.com/yaegaki/items/bdf529f07552d72bc6e5)
 * 文字化け対応
