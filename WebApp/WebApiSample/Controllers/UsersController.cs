@@ -26,8 +26,11 @@ namespace WebApiSample.Controllers
     {
       var data = new Dictionary<string, object>();
 
-      // SQL実行
-      var userName = repository.getUserName(param["userID"].ToString());
+      // パラメータ取得
+      var userId = param["userID"].ToString();
+
+      // ユーザークラスのメソッドを呼び出し
+      var userName = Users.getUserName(repository,userId);
       data.Add(nameof(userName), userName);
 
       var result = new Dictionary<string, Dictionary<string, object>>();
