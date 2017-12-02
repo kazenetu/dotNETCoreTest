@@ -14,23 +14,31 @@ namespace WebApiSample.Controllers
   [Route("api/[controller]")]
   public class UsersController : Controller
   {
-    private readonly IUserRepository repository;
+    private readonly IUserService service;
 
-    public UsersController(IUserRepository repository){
-      this.repository = repository;
+    public UsersController(IUserService service){
+      this.service = service;
     }
 
     // POST api/Users
     [HttpPost]
-    public JsonResult Post([FromBody]Dictionary<string, object> param)
+    public IActionResult  Post([FromBody]Dictionary<string, object> param)
     {
       var data = new Dictionary<string, object>();
 
-      // パラメータ取得
-      var userId = param["userID"].ToString();
+      var paramNameUserId = "userID";
 
-      // ユーザークラスのメソッドを呼び出し
-      var userName = Users.getUserName(repository,userId);
+      // 入力チェック
+      if(!param.ContainsKey(paramNameUserId)){
+        return BadRequest();
+      }
+
+      // パラメータ取得
+      var user = Models.User.Create();
+      user.UserId = param["userID"].ToString();
+
+      // サービスのメソッドを呼び出し
+      var userName = service.getUserName(user);
       data.Add(nameof(userName), userName);
 
       var result = new Dictionary<string, Dictionary<string, object>>();
