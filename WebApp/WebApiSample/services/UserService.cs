@@ -24,7 +24,7 @@ namespace service
     /// ユーザー名取得
     /// </summary>
     /// <param name="user">ユーザーパラメータ</param>
-    /// <returns>ユーザー名</returns>
+    /// <returns>"Hello! ユーザー名"</returns>
     public string getUserName(User user)
     {
       return string.Format("Hello! {0}", repository.getUserName(user.UserId));
