@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Commons.ConfigModel;
 using Infrastructure;
 using Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +32,9 @@ namespace WebApiSample
             // DIのテスト
             services.AddScoped<IUserRepository,UserRepository>();
             services.AddScoped<IUserService ,UserService>();
+
+            // Configを専用Modelに設定
+            services.Configure<DatabaseConfigModel>(this.Configuration.GetSection("DB"));  
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
