@@ -1,7 +1,9 @@
 ﻿using System.Text;
+using Commons.ConfigModel;
 using Commons.DB;
 using Commons.Interfaces;
 using Interfaces;
+using Microsoft.Extensions.Options;
 
 namespace Infrastructure
 {
@@ -9,9 +11,9 @@ namespace Infrastructure
   {
     private IDatabase db;
 
-    public UserRepository()
+    public UserRepository(IOptions<DatabaseConfigModel> config)
     {
-      db = DatabaseFactory.Create();
+      db = DatabaseFactory.Create(config.Value);
     }
 
     public void Dispose(){

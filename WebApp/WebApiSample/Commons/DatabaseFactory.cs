@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Commons.ConfigModel;
 using Commons.Interfaces;
 
 namespace Commons.DB
@@ -13,14 +14,25 @@ namespace Commons.DB
     /// DBインスタンス取得
     /// </summary>
     /// <returns>IDatabasインスタンス</returns>
-    public static IDatabase Create()
+    public static IDatabase Create(DatabaseConfigModel config)
     {
+      IDatabase result = null;
 
-      // TODO 設定ファイルによるインスタンス生成
-      var resourcePath = AppContext.BaseDirectory;
-      resourcePath = Path.Combine(resourcePath, "Resource/Test.db");
+      // DB種類で作成するインスタンスを変える
+      switch (config.Type.ToLower())
+      {
+        case "sqlite":
+          result = new SQLiteDB(config.connectionString);
+          break;
+        case "postgres":
+          result = new PostgreSQLDB(config.connectionString);
+          break;
+        default:
+          result = new SQLiteDB(config.connectionString);
+          break;
+      }
 
-      return new SQLiteDB("Data Source=" + resourcePath);
+      return result;
     }
   }
 }

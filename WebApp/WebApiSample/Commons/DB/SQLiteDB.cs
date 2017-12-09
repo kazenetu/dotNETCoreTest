@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using Commons.Interfaces;
 using Microsoft.Data.Sqlite;
 
@@ -170,7 +171,10 @@ namespace Commons.DB
     /// <returns>コネクションインスタンス</returns>
     private SqliteConnection getConnection(string connectionString)
     {
-      return new SqliteConnection(connectionString);
+      var resourcePath = AppContext.BaseDirectory;
+      resourcePath = String.Format("Data Source={0}",Path.Combine(resourcePath, connectionString));
+
+      return new SqliteConnection(resourcePath);
     }
 
     /// <summary>
