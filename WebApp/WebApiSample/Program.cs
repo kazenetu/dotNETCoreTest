@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Debug;
 
 namespace WebApiSample
 {
@@ -19,7 +20,10 @@ namespace WebApiSample
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
+            .ConfigureLogging(logging =>
+                logging.AddFilter("System", LogLevel.None)
+                        .AddFilter<DebugLoggerProvider>("Microsoft", LogLevel.None))
+                        .UseStartup<Startup>()
                 .Build();
     }
 }
