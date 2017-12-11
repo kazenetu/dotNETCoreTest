@@ -20,10 +20,7 @@ namespace WebApiSample
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-            .ConfigureLogging(logging =>
-                logging.AddFilter("System", LogLevel.None)
-                        .AddFilter<DebugLoggerProvider>("Microsoft", LogLevel.None))
-                        .UseStartup<Startup>()
+                .UseStartup<Startup>()
                 .Build();
     }
 }
