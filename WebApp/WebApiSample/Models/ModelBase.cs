@@ -3,7 +3,7 @@ namespace Models
   /// <summary>
   /// Modelクラスのスーパークラス
   /// </summary>
-  public abstract class ModelBase<T>  where T :  new()
+  public abstract class ModelBase<T> where T : new()
   {
 
     /// <summary>

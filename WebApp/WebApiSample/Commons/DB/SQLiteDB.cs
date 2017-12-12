@@ -172,7 +172,7 @@ namespace Commons.DB
     private SqliteConnection getConnection(string connectionString)
     {
       var resourcePath = AppContext.BaseDirectory;
-      resourcePath = String.Format("Data Source={0}",Path.Combine(resourcePath, connectionString));
+      resourcePath = String.Format("Data Source={0}", Path.Combine(resourcePath, connectionString));
 
       return new SqliteConnection(resourcePath);
     }

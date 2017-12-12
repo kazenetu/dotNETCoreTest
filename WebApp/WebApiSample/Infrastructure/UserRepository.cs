@@ -16,7 +16,8 @@ namespace Infrastructure
       db = DatabaseFactory.Create(config.Value);
     }
 
-    public void Dispose(){
+    public void Dispose()
+    {
       db.Dispose();
     }
 

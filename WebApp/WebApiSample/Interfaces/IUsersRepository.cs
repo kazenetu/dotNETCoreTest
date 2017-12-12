@@ -5,8 +5,8 @@ namespace Interfaces
   /// <summary>
   /// ユーザー情報
   /// </summary>
-  public interface IUserRepository:IDisposable
+  public interface IUserRepository : IDisposable
   {
-      string getUserName(string userId);
+    string getUserName(string userId);
   }
 }
