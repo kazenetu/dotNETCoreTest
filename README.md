@@ -157,6 +157,7 @@ namespace ConsoleApp
     * [ASP.NET Core でのログ記録の概要](https://docs.microsoft.com/ja-jp/aspnet/core/fundamentals/logging?tabs=aspnetcore2x)
     * [Entity Framework Core - SQLをログで確認する(いちろぐ)](http://ichiroku11.hatenablog.jp/entry/2017/10/02/221329)
     * [Essential .NET - .NET Core によるログ記録](https://msdn.microsoft.com/ja-jp/magazine/mt694089.aspx)
+    * [NLog.Web:Getting started with ASP.NET Core 2](https://github.com/NLog/NLog.Web/wiki/Getting-started-with-ASP.NET-Core-2)
 * リソースファイル追加
   * [project.json プロパティと csproj プロパティの間のマッピング](https://docs.microsoft.com/ja-jp/dotnet/core/tools/project-json-to-csproj)
   * [Qiita:ASP.NET Core MVC における構成ファイル appsettings.json からの値取得](https://qiita.com/hiromasa-masuda/items/d7e33b20d3eedee771f4)
