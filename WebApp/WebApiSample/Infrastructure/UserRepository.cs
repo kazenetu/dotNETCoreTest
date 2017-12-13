@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using Commons.ConfigModel;
 using Commons.DB;
 using Commons.Interfaces;
