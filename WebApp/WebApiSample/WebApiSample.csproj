@@ -17,6 +17,7 @@
     <PackageReference Include="Npgsql" Version="3.2.5" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.5.0-rc2" />
     <None Include="Resource/Test.db" CopyToOutputDirectory="Always" />
+    <Content Update="nlog.config" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>
