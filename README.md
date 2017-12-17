@@ -168,3 +168,5 @@ namespace ConsoleApp
   * [Qiita:Visual Studio Codeタスクのdotnetコマンド出力を文字化けしないようにする](https://qiita.com/masaru_b_cl/items/705b75d256b11cb82feb)
 * ユニットテスト
   * [Qiita:xUnit.net でユニットテストを始める](https://qiita.com/takutoy/items/84fa6498f0726418825d)
+* セキュリティ
+  * [しばやん雑記:ASP.NET Core で Open Redirect 攻撃を避けるために LocalRedirect / IsLocalUrl を使う](http://blog.shibayan.jp/entry/20171217/1513504740)
