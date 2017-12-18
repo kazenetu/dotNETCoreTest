@@ -7,6 +7,6 @@ namespace Interfaces
   /// </summary>
   public interface IUserRepository : IDisposable
   {
-    string getUserName(string userId);
+    string GetUserName(string userId);
   }
 }

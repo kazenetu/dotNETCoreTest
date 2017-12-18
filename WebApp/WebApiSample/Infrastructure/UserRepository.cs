@@ -26,7 +26,7 @@ namespace Infrastructure
     /// </summary>
     /// <param name="userId">ユーザーID</param>
     /// <returns>ユーザー名</returns>
-    public string getUserName(string userId)
+    public string GetUserName(string userId)
     {
       var sql = new StringBuilder();
       sql.AppendLine("select");
