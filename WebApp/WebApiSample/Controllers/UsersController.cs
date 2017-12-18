@@ -46,7 +46,7 @@ namespace WebApiSample.Controllers
       logger.LogDebug("Pram[{0}] = {1}", paramNameUserId, user.UserId);
 
       // サービスのメソッドを呼び出し
-      var userName = service.getUserName(user);
+      var userName = service.GetUserName(user);
       data.Add(nameof(userName), userName);
 
       var result = new Dictionary<string, Dictionary<string, object>>();

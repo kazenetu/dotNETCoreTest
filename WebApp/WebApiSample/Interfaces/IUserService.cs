@@ -13,6 +13,6 @@ namespace Interfaces
     /// </summary>
     /// <param name="user">ユーザーパラメータ</param>
     /// <returns>ユーザー名</returns>
-    string getUserName(User user);
+    string GetUserName(User user);
   }
 }
