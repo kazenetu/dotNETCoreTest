@@ -10,6 +10,8 @@ using Models;
 using Interfaces;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Antiforgery;
 
 namespace WebApiSample.Controllers
 {
@@ -27,6 +29,7 @@ namespace WebApiSample.Controllers
 
     // POST api/Users
     [HttpPost]
+    [AutoValidateAntiforgeryToken]
     public IActionResult Post([FromBody]Dictionary<string, object> param)
     {
       var data = new Dictionary<string, object>();
