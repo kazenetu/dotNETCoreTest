@@ -1,5 +1,5 @@
 var myApp = angular.module('webApiService', []);
-myApp.service('webApiService',['$resource','$location', function($resource,$location) {
+myApp.service('webApiService',['$resource', function($resource) {
 
   this.baseUri = "api/";
 
@@ -19,7 +19,7 @@ myApp.service('webApiService',['$resource','$location', function($resource,$loca
       result.$promise.then(function (response) {
           callFunction(response);
       }, function (response) {
-        $location.path('/');
+        window.location = "/";
       });
     };
 
@@ -32,7 +32,7 @@ myApp.service('webApiService',['$resource','$location', function($resource,$loca
       result.$promise.then(function (response) {
           callFunction(response);
       }, function (response) {
-        $location.path('/');
+        window.location = "/";
       });
     };
 
@@ -45,7 +45,7 @@ myApp.service('webApiService',['$resource','$location', function($resource,$loca
       result.$promise.then(function (response) {
           callFunction(response);
       }, function (response) {
-          $location.path('/');
+          window.location = "/";
       });
     };
 
@@ -58,7 +58,7 @@ myApp.service('webApiService',['$resource','$location', function($resource,$loca
       result.$promise.then(function (response) {
           callFunction(response);
       }, function (response) {
-        $location.path('/');
+        window.location = "/";
       });
     };
 
