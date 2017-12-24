@@ -39,6 +39,18 @@ namespace WebApiSample
 
       // Configを専用Modelに設定
       services.Configure<DatabaseConfigModel>(this.Configuration.GetSection("DB"));
+
+      // Adds a default in-memory implementation of IDistributedCache.
+      services.AddDistributedMemoryCache();
+
+      // session
+      services.AddSession();
+      // services.AddSession(options =>
+      // {
+      //     // Set a short timeout for easy testing.
+      //     options.IdleTimeout = TimeSpan.FromSeconds(10);
+      //     options.Cookie.HttpOnly = true;
+      // });      
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +60,9 @@ namespace WebApiSample
       {
         app.UseDeveloperExceptionPage();
       }
+      // session設定
+      app.UseSession();
+
       app.UseMvc();
 
       // ルートアクセス時にトークン発行
