@@ -70,5 +70,22 @@ namespace WebApiSample.Controllers
       return Json(result);
     }
 
+    // POST api/Users/Clear
+    [HttpPost("Clear")]
+    [AutoValidateAntiforgeryToken]
+    public IActionResult ClearPost([FromBody]Dictionary<string, object> param)
+    {
+      // セッションクリア
+      HttpContext.Response.Cookies.Delete(Statics.SessionName);
+      HttpContext.Session.Clear();
+
+      var data = new Dictionary<string, object>();
+      data.Add("result", "ok");
+
+      var result = new Dictionary<string, Dictionary<string, object>>();
+      result.Add("value", data);
+
+      return Json(result);
+    }
   }
 }
