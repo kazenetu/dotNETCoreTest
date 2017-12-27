@@ -32,6 +32,9 @@
         <div>
             <button data-ng-click="ctrl.getUserNameButton()">USER NAME</button>
         </div>
+        <div>
+            <button data-ng-click="ctrl.clearSessions()">Clear Sessions</button>
+        </div>
     </div>
     
     <script>
@@ -65,6 +68,19 @@ angular.module('App').controller('sample',
 
         this.getUserNameButton = function() {
             var result = webApiService.post('Users', 
+            {userID:'test'}
+            ,function (response) {
+                var message = '';
+                for(key in response.value){
+                    message  += (key + "=" + response.value[key]);
+                    message  += "\n"
+                }
+                alert(message);
+            });
+        }
+
+        this.clearSessions = function() {
+            var result = webApiService.post('Users/Clear', 
             {userID:'test'}
             ,function (response) {
                 var message = '';
