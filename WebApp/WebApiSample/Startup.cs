@@ -50,7 +50,7 @@ namespace WebApiSample
           // Set a short timeout for easy testing.
           // options.IdleTimeout = TimeSpan.FromSeconds(10);
           // options.Cookie.HttpOnly = true;
-          options.Cookie.Name = Statics.SessionName;
+          options.Cookie.Name = Static.SessionName;
       });      
 
     }

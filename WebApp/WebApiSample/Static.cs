@@ -1,6 +1,6 @@
 namespace WebApiSample
 {
-  public static class Statics
+  public static class Static
   {
     public static string  SessionName = "sid";
   }

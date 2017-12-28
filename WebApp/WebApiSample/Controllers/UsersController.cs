@@ -76,7 +76,7 @@ namespace WebApiSample.Controllers
     public IActionResult ClearPost([FromBody]Dictionary<string, object> param)
     {
       // セッションクリア
-      HttpContext.Response.Cookies.Delete(Statics.SessionName);
+      HttpContext.Response.Cookies.Delete(Static.SessionName);
       HttpContext.Session.Clear();
 
       var data = new Dictionary<string, object>();
