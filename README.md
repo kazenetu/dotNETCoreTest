@@ -67,7 +67,7 @@ Windows10 Home
 1. ターミナルで`dotnet add package Microsoft.Extensions.Logging.Console --version 2.0.0`を実行  
    ※インストール対象[Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/)
 1. コンソールアプリで利用する場合は下記のように実装する
-```
+```csharp
 using Microsoft.Extensions.Logging;
 
 namespace ConsoleApp
@@ -100,7 +100,7 @@ namespace ConsoleApp
  ※インストール対象[Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/)
 </li><li>Startup.csにセッションの設定を追加する
 
-```
+```csharp
 public class Startup
 {
   //-------- ～省略～ --------
@@ -130,7 +130,7 @@ public class Startup
 
 </li><li>セッションの値の取得と設定例は下記のようにする。
 
-```
+```csharp
 [Route("api/[controller]")]
 public class UsersController : Controller
 {
