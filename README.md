@@ -93,6 +93,67 @@ namespace ConsoleApp
 
 ```
 
+### セッションの設定
+<ol><li>ターミナルで`dotnet add package Microsoft.AspNetCore.Session --version 2.0.1`を実行
+
+または csprojファイルの「ItemGroup」に`<PackageReference Include="Microsoft.AspNetCore.Session" Version="2.0.1" />`を追加  
+ ※インストール対象[Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/)
+</li><li>Startup.csにセッションの設定を追加する
+
+```
+public class Startup
+{
+  //-------- ～省略～ --------
+
+  public void ConfigureServices(IServiceCollection services)
+  {
+    //-------- ～省略～ --------
+
+    // Adds a default in-memory implementation of IDistributedCache.
+    services.AddDistributedMemoryCache();
+
+    // session
+    services.AddSession();
+  }
+
+  public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+  {
+    //-------- ～省略～ --------
+
+    // session設定
+    app.UseSession();
+
+    //-------- ～省略～ --------
+  }
+}
+```
+
+</li><li>セッションの値の取得と設定例は下記のようにする。
+
+```
+[Route("api/[controller]")]
+public class UsersController : Controller
+{
+  // セッションキー
+  private const string SessionKeyName = "_Name";
+  
+  public IActionResult Post([FromBody]Dictionary<string, object> param)
+  {
+    //-------- ～省略～ --------
+
+    // セッションの値チェックと取得
+    if(HttpContext.Session.Keys.Contains(SessionKeyName)){
+      data.Add("beforeValue", HttpContext.Session.GetString(SessionKeyName));
+    }
+    // セッションに値を設定
+    HttpContext.Session.SetString(SessionKeyName, userName);
+
+    //-------- ～省略～ --------
+  }
+}
+```
+</li></ol>
+
 ### ソリューションとWebAPIプロジェクトを作成、設定する
 1. ソリューションフォルダを作成する  
    ターミナル(コマンドプロンプト)で  
