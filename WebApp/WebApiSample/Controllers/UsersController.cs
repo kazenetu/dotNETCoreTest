@@ -56,7 +56,6 @@ namespace WebApiSample.Controllers
 
       // 前回の戻り値を設定
       if(HttpContext.Session.Keys.Contains(SessionKeyName)){
-      //if(HttpContext.Session.Get(SessionKeyName) != null){
         data.Add("beforeValue", HttpContext.Session.GetString(SessionKeyName));
       }
       // セッションにユーザー名を設定
