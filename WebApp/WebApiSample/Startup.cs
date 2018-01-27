@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Commons.ConfigModel;
+using DinkToPdf;
+using DinkToPdf.Contracts;
 using Infrastructure;
 using Interfaces;
 using Microsoft.AspNetCore.Antiforgery;
@@ -53,6 +55,7 @@ namespace WebApiSample
           options.Cookie.Name = Static.SessionName;
       });      
 
+       services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
