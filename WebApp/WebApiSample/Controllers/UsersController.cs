@@ -12,6 +12,9 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Antiforgery;
+using DinkToPdf;
+using System.Web;
+using DinkToPdf.Contracts;
 
 namespace WebApiSample.Controllers
 {
@@ -21,12 +24,15 @@ namespace WebApiSample.Controllers
     private readonly IUserService service;
     private readonly ILogger logger;
 
+    private IConverter converter;
+
     private const string SessionKeyName = "_Name";
 
-    public UsersController(IUserService service, ILogger<UsersController> logger)
+    public UsersController(IUserService service, ILogger<UsersController> logger, IConverter converter)
     {
       this.service = service;
       this.logger = logger;
+      this.converter = converter;
     }
 
     // POST api/Users
@@ -85,6 +91,38 @@ namespace WebApiSample.Controllers
       result.Add("value", data);
 
       return Json(result);
+    }
+
+    [HttpPost("PDFDownload")]
+    public IActionResult PDFDownload()
+    {
+      var doc = new HtmlToPdfDocument()
+      {
+          GlobalSettings = {
+          ColorMode = ColorMode.Color,
+          Orientation = Orientation.Landscape,
+          PaperSize = PaperKind.A4Plus,
+        },
+        Objects = {
+        new ObjectSettings() {
+            PagesCount = true,
+            HtmlContent = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consectetur mauris eget ultrices  iaculis. Ut                               odio viverra, molestie lectus nec, venenatis turpis.",
+            WebSettings = { DefaultEncoding = "utf-8" },
+            HeaderSettings = { FontSize = 9, Right = "Page [page] of [toPage]", Line = true, Spacing = 2.812 }
+        }
+      }
+      };
+
+      byte[] pdf = converter.Convert(doc);
+
+      // サンプルのファイル名
+      string fileName = string.Format("テスト_{0:yyyyMMddHHmmss}.pdf", DateTime.Now);
+      fileName = HttpUtility.UrlEncode(fileName, System.Text.Encoding.UTF8);
+
+      // ファイル名を設定
+      Response.Headers.Add("Content-Disposition", "attachment; filename=" + fileName);
+
+      return new FileContentResult(pdf, "application/pdf");
     }
   }
 }
