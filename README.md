@@ -169,6 +169,8 @@ public class UsersController : Controller
    `dotnet sln WebApp.sln add WebApiSample/WebApiSample.csproj`
    を実行する
 
+### その他
+- [DinkToPdfを使ってみた](useDinkToPdf.md)
 
 ### とりえず使ってみた感想
 * 「定義に移動」はVisualStudioと同じようにF12。  
