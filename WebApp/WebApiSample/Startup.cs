@@ -63,8 +63,12 @@ namespace WebApiSample
     {
       if (env.IsDevelopment())
       {
-        app.UseDeveloperExceptionPage();
+        //app.UseDeveloperExceptionPage();
       }
+
+      // エラーハンドリング
+      app.UseStatusCodePagesWithRedirects("/error/error.html");
+
       // session設定
       app.UseSession();
 
