@@ -124,5 +124,26 @@ namespace WebApiSample.Controllers
 
       return new FileContentResult(pdf, "application/pdf");
     }
+
+    [HttpPost("upload")]
+    public IActionResult Upload()
+    {
+      if(Request.Form.Files.Any()){
+        var fileData = Request.Form.Files[0];
+        var fileName = string.Format("{0}_{1:yyyyMMddHHmmss}.{2}",
+                          Path.GetFileNameWithoutExtension(fileData.FileName), 
+                          DateTime.Now,
+                          Path.GetExtension(fileData.FileName));
+        
+        // ファイル名を設定
+        fileName = HttpUtility.UrlEncode(fileName, System.Text.Encoding.UTF8);
+        Response.Headers.Add("Content-Disposition", "attachment; filename=" + fileName);
+
+        return new FileStreamResult(fileData.OpenReadStream(), "APPLICATION/octet-stream");
+      }
+
+      return BadRequest();
+    }
+
   }
 }
