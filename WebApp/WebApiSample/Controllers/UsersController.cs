@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Antiforgery;
 using DinkToPdf;
 using System.Web;
 using DinkToPdf.Contracts;
+using System.Text;
 
 namespace WebApiSample.Controllers
 {
@@ -96,6 +97,33 @@ namespace WebApiSample.Controllers
     [HttpPost("PDFDownload")]
     public IActionResult PDFDownload()
     {
+      var html = new StringBuilder();
+
+      html.Append(@"
+      <!DOCTYPE html>
+      <html lang=""ja""\>
+      <head> 
+      <meta charset=""utf-8"">
+      </head>
+      <body>");
+
+      html.Append(@"<table style=""border-spacing:0px;"">");
+
+      for(var index = 0;index < 10;index++){
+        html.Append("<tr>");
+        for(var colIndex = 0; colIndex<5;colIndex++){
+          html.AppendFormat(@"<td style=""border-style:solid;border-width:1px;margin:0px;background-color:RGBA({0},{1},{2},255);"">",
+            colIndex*50,255,255);
+          html.AppendFormat("row{0}:col{1}",index,colIndex);
+          html.Append("</td>");
+        }
+        html.Append("</tr>");
+      }
+
+      html.Append("</table>");
+
+      html.Append(@"</body></html>");
+
       var doc = new HtmlToPdfDocument()
       {
           GlobalSettings = {
@@ -106,7 +134,7 @@ namespace WebApiSample.Controllers
         Objects = {
         new ObjectSettings() {
             PagesCount = true,
-            HtmlContent = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consectetur mauris eget ultrices  iaculis. Ut                               odio viverra, molestie lectus nec, venenatis turpis.",
+            HtmlContent = html.ToString(),
             WebSettings = { DefaultEncoding = "utf-8" },
             HeaderSettings = { FontSize = 9, Right = "Page [page] of [toPage]", Line = true, Spacing = 2.812 }
         }
