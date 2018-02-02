@@ -107,7 +107,7 @@ namespace WebApiSample.Controllers
       </head>
       <body>");
 
-      html.Append(@"<table style=""border-spacing:0px;"">");
+      html.Append(@"<table style=""border-spacing:0px;width:100%;"">");
 
       for(var index = 0;index < 10;index++){
         html.Append("<tr>");
