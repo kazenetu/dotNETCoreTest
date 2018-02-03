@@ -115,6 +115,7 @@ namespace WebApiSample.Controllers
           html.AppendFormat(@"<td style=""border-style:solid;border-width:1px;margin:0px;background-color:RGBA({0},{1},{2},255);"">",
             colIndex*50,255,255);
           html.AppendFormat("row{0}:col{1}",index,colIndex);
+          html.Append("<br>日本語あいうえお");
           html.Append("</td>");
         }
         html.Append("</tr>");
