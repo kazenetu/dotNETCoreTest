@@ -75,6 +75,65 @@ ConfigureServicesメソッドにDIの設定を行う
 まだDinkToPdfのサンプルをコピペしただけなので、どこまで有用かわかっていません。  
 今後、もう少し突っ込んだ技術検証をしていこうと思います。
 
+### **2018/02/03追記**
+表形式を出力できるように修正してみました。  
+日本語もそのまま出力できるようです。
+
+``` CSharp
+[HttpPost("PDFDownload")]
+public IActionResult PDFDownload()
+{
+  var html = new StringBuilder();
+
+  html.Append(@"
+  <!DOCTYPE html>
+  <html lang=""ja""\>
+  <head> 
+  <meta charset=""utf-8"">
+  </head>
+  <body>");
+
+  html.Append(@"<table style=""border-spacing:0px;width:100%;"">");
+
+  for(var index = 0;index < 10;index++){
+    html.Append("<tr>");
+    for(var colIndex = 0; colIndex<5;colIndex++){
+      html.AppendFormat(@"<td style=""border-style:solid;border-width:1px;margin:0px;background-color:RGBA({0},{1},{2},255);"">",
+        colIndex*50,255,255);
+      html.AppendFormat("row{0}:col{1}",index,colIndex);
+      html.Append("<br>日本語あいうえお");
+      html.Append("</td>");
+    }
+    html.Append("</tr>");
+  }
+
+  html.Append("</table>");
+
+  html.Append(@"</body></html>");
+
+  var doc = new HtmlToPdfDocument()
+  {
+      GlobalSettings = {
+      ColorMode = ColorMode.Color,
+      Orientation = Orientation.Landscape,
+      PaperSize = PaperKind.A4Plus,
+    },
+    Objects = {
+    new ObjectSettings() {
+        PagesCount = true,
+        HtmlContent = html.ToString(),
+        WebSettings = { DefaultEncoding = "utf-8" },
+        HeaderSettings = { FontSize = 9, Right = "Page [page] of [toPage]", Line = true, Spacing = 2.812 }
+    }
+  }
+  };
+
+  byte[] pdf = converter.Convert(doc);
+
+  // ~以下略~
+}
+```
+
 ### 参考URL
 - [nuget DinkToPdf](https://www.nuget.org/packages/DinkToPdf/)  
 - [GitHub DinkToPdf](https://github.com/rdvojmoc/DinkToPdf)
