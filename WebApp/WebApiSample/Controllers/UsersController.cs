@@ -123,6 +123,10 @@ namespace WebApiSample.Controllers
 
       html.Append("</table>");
 
+      html.Append(@"<div style='page-break-after: always;'></div>");
+      html.Append(@"page break<br>");
+      html.Append(@"ページブレイク");
+
       html.Append(@"</body></html>");
 
       var doc = new HtmlToPdfDocument()
