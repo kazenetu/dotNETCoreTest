@@ -21,6 +21,10 @@
     <PackageReference Include="DinkToPdf" Version="1.0.8" />
     <None Include="Resource/Test.db" CopyToOutputDirectory="PreserveNewest" />
     <Content Update="nlog.config" CopyToOutputDirectory="PreserveNewest" />
+
+    <Content Include="libwkhtmltox.dll" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="libwkhtmltox.so" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="libwkhtmltox.dylib" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>
