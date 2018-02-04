@@ -19,9 +19,16 @@
     1. インストールフォルダのbinフォルダのパスを追加  
     例)C:\Program Files\wkhtmltopdf\bin
     1. OKを押して閉じる
+1. libwkhtmltoxの配置
+    1. [https://github.com/rdvojmoc/DinkToPdf/tree/master/v0.12.4](https://github.com/rdvojmoc/DinkToPdf/tree/master/v0.12.4)から32bit・64bitのどちらかをダウンロードし、プロジェクト直下にコピーする。
 1. csprojの編集
     1. DinkToPdfを追加する  
-```<PackageReference Include="DinkToPdf" Version="1.0.8" />```
+```<ItemGroup>```  
+```  <PackageReference Include="DinkToPdf" Version="1.0.8" />```  
+```  <Content Include="libwkhtmltox.dll" CopyToOutputDirectory="PreserveNewest" />```  
+```  <Content Include="libwkhtmltox.so" CopyToOutputDirectory="PreserveNewest" />```  
+```  <Content Include="libwkhtmltox.dylib" CopyToOutputDirectory="PreserveNewest" />```  
+```<ItemGroup>```  
     1. ```dotnet restore```を実行する
 
 ## 開発
