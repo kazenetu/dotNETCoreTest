@@ -131,6 +131,7 @@ namespace WebApiSample.Controllers
           ColorMode = ColorMode.Color,
           Orientation = Orientation.Landscape,
           PaperSize = PaperKind.A4Plus,
+          DPI = 48,
         },
         Objects = {
         new ObjectSettings() {
