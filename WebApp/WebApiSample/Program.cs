@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
@@ -16,6 +18,8 @@ namespace WebApiSample
   {
     public static void Main(string[] args)
     {
+      Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+      Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
       // NLog: setup the logger first to catch all errors
       var logger = NLogBuilder.ConfigureNLog("NLog.config").GetCurrentClassLogger();
       try
