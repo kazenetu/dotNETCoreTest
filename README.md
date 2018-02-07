@@ -171,6 +171,7 @@ public class UsersController : Controller
 
 ### その他
 - [DinkToPdfを使ってみた](useDinkToPdf.md)
+- [WindowsへのPublishのTips](publishWindowsTips.md)
 
 ### とりえず使ってみた感想
 * 「定義に移動」はVisualStudioと同じようにF12。  
