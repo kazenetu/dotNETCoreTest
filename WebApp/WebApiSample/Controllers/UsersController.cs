@@ -164,6 +164,11 @@ namespace WebApiSample.Controllers
     {
       if(Request.Form.Files.Any()){
         var fileData = Request.Form.Files[0];
+
+        if(fileData.FileName == string.Empty){
+          return BadRequest();
+        }
+
         var fileName = string.Format("{0}_{1:yyyyMMddHHmmss}.{2}",
                           Path.GetFileNameWithoutExtension(fileData.FileName), 
                           DateTime.Now,
@@ -179,5 +184,45 @@ namespace WebApiSample.Controllers
       return BadRequest();
     }
 
+    [HttpPost("uploadJS")]
+    public IActionResult UploadJS()
+    {
+      if(Request.Form.Files.Any()){
+        var fileData = Request.Form.Files[0];
+
+        if(fileData.FileName == string.Empty){
+          return BadRequest();
+        }
+
+        var fileName = string.Format("{0}_{1:yyyyMMddHHmmss}.{2}",
+                          Path.GetFileNameWithoutExtension(fileData.FileName), 
+                          DateTime.Now,
+                          Path.GetExtension(fileData.FileName));
+        
+        // ファイル名を設定
+        fileName = HttpUtility.UrlEncode(fileName, System.Text.Encoding.UTF8);
+        Response.Headers.Add("Content-Disposition", "attachment; filename=" + fileName);
+
+        // ファイルの中身を取得する
+        var fileResult = new List<string>();
+        using(var sr = new StreamReader(fileData.OpenReadStream())){
+          while(!sr.EndOfStream)
+          {
+            fileResult.Add(sr.ReadLine());
+          }
+        }
+
+        var data = new Dictionary<string, object>();
+        data.Add("result", "ok");
+        data.Add("fileData", fileResult);
+
+        var result = new Dictionary<string, Dictionary<string, object>>();
+        result.Add("value", data);
+
+        return Json(result);
+      }
+
+      return BadRequest();
+    }
   }
 }
