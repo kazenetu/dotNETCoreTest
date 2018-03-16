@@ -19,10 +19,10 @@
     <script src="assets/common/lib/angular/angular-route.min.js"></script>
     <script src="assets/common/lib/angular/angular-sanitize.min.js"></script>
 
-	<script src="assets/app.js"></script>
+    <script src="assets/app.js"></script>
     <script src="assets/common/service/webApiService.js"></script>
 
-    <div  data-ng-controller="sample as ctrl">
+    <div data-ng-controller="sample as ctrl">
         <div>
             <button data-ng-click="ctrl.getButton()">GETTEST</button>
         </div>
@@ -53,80 +53,80 @@
             <button data-ng-click="ctrl.upload()">Upload(JS)</button>
         </div>
     </div>
-    
+
     <script>
 
-angular.module('App').controller('sample',
-    function (webApiService) {
+        angular.module('App').controller('sample',
+            function (webApiService) {
 
-        this.getButton = function () {
+                this.getButton = function () {
 
-            var result = webApiService.get('Values', {  }
-            ,function (response) {
-                if('value' in response){
-                    alert('value:' + response.value);
+                    var result = webApiService.get('Values', {}
+                        , function (response) {
+                            if ('value' in response) {
+                                alert('value:' + response.value);
+                            }
+                        });
                 }
-            });
-        }
 
-        this.postButton = function () {
+                this.postButton = function () {
 
-            var result = webApiService.post('Values', 
-            {value:'test',param:['1','2',3],stringArray:['A','BC'],doubleValue:1.101,intValue:100 }
-            ,function (response) {
-                var message = '';
-                for(key in response.value){
-                    message  += (key + "=" + response.value[key]);
-                    message  += "\n"
+                    var result = webApiService.post('Values',
+                        { value: 'test', param: ['1', '2', 3], stringArray: ['A', 'BC'], doubleValue: 1.101, intValue: 100 }
+                        , function (response) {
+                            var message = '';
+                            for (key in response.value) {
+                                message += (key + "=" + response.value[key]);
+                                message += "\n"
+                            }
+                            alert(message);
+                        });
                 }
-                alert(message);
-            });
-        }
 
-        this.getUserNameButton = function() {
-            var result = webApiService.post('Users', 
-            {userID:'test'}
-            ,function (response) {
-                var message = '';
-                for(key in response.value){
-                    message  += (key + "=" + response.value[key]);
-                    message  += "\n"
+                this.getUserNameButton = function () {
+                    var result = webApiService.post('Users',
+                        { userID: 'test' }
+                        , function (response) {
+                            var message = '';
+                            for (key in response.value) {
+                                message += (key + "=" + response.value[key]);
+                                message += "\n"
+                            }
+                            alert(message);
+                        });
                 }
-                alert(message);
-            });
-        }
 
-        this.clearSessions = function() {
-            var result = webApiService.post('Users/Clear', 
-            {userID:'test'}
-            ,function (response) {
-                var message = '';
-                for(key in response.value){
-                    message  += (key + "=" + response.value[key]);
-                    message  += "\n"
+                this.clearSessions = function () {
+                    var result = webApiService.post('Users/Clear',
+                        { userID: 'test' }
+                        , function (response) {
+                            var message = '';
+                            for (key in response.value) {
+                                message += (key + "=" + response.value[key]);
+                                message += "\n"
+                            }
+                            alert(message);
+                        });
                 }
-                alert(message);
-            });
-        }
 
-        this.upload = function() {
-            var fd = new FormData();
-            fd.append('filename',document.getElementById('filenameJS').files[0]);
+                this.upload = function () {
+                    var fd = new FormData();
+                    fd.append('filename', document.getElementById('filenameJS').files[0]);
 
-            webApiService.postUpload('Users/uploadJS', 
-            fd
-            ,function (response) {
-                var message = '';
-                for(key in response.value){
-                    message  += (key + "=" + response.value[key]);
-                    message  += "\n"
+                    webApiService.postUpload('Users/uploadJS',
+                        fd
+                        , function (response) {
+                            var message = '';
+                            for (key in response.value) {
+                                message += (key + "=" + response.value[key]);
+                                message += "\n"
+                            }
+                            alert(message);
+                        });
                 }
-                alert(message);
-            });
-        }
-    }
-);
-   
+            }
+        );
+
     </script>
 </body>
 
