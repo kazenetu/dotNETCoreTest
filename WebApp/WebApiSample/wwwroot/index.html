@@ -35,19 +35,23 @@
         <div>
             <button data-ng-click="ctrl.clearSessions()">Clear Sessions</button>
         </div>
-    </div>
 
-    <div>
-        <form method="POST" action="api/Users/PDFDownload">
-            <button type="submit">PDFダウンロード</button>
-        </form>
-    </div>
+        <div>
+            <form method="POST" action="api/Users/PDFDownload">
+                <button type="submit">PDFダウンロード</button>
+            </form>
+        </div>
 
-    <div>
-        <form method="POST" action="api/Users/upload" enctype="multipart/form-data">
-            <input type="file" name="filename"  />
-            <input type="submit" value="Upload" />
-        </form>
+        <div>
+            <form method="POST" action="api/Users/upload" enctype="multipart/form-data">
+                <input type="file" name="filename" />
+                <input type="submit" value="Upload" />
+            </form>
+        </div>
+        <div>
+            <input type="file" name="filenameJS" id="filenameJS" />
+            <button data-ng-click="ctrl.upload()">Upload(JS)</button>
+        </div>
     </div>
     
     <script>
@@ -95,6 +99,22 @@ angular.module('App').controller('sample',
         this.clearSessions = function() {
             var result = webApiService.post('Users/Clear', 
             {userID:'test'}
+            ,function (response) {
+                var message = '';
+                for(key in response.value){
+                    message  += (key + "=" + response.value[key]);
+                    message  += "\n"
+                }
+                alert(message);
+            });
+        }
+
+        this.upload = function() {
+            var fd = new FormData();
+            fd.append('filename',document.getElementById('filenameJS').files[0]);
+
+            webApiService.postUpload('Users/uploadJS', 
+            fd
             ,function (response) {
                 var message = '';
                 for(key in response.value){
