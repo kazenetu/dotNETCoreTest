@@ -37,6 +37,27 @@ myApp.service('webApiService',['$resource', function($resource) {
     };
 
     /**
+     * POSTメソッド:Upload
+     */
+    this.postUpload = function(action,params,callFunction){
+      var result = $resource(this.baseUri + action,null,
+        {
+          'save':{
+            method:'POST',
+            transformRequest: null,
+            headers: {'Content-type':undefined}
+          }
+        }
+      ).save(params);
+
+      result.$promise.then(function (response) {
+          callFunction(response);
+      }, function (response) {
+          window.location = "/";
+      });
+    };
+
+    /**
      * POSTメソッド
      */
     this.post = function(action,params,callFunction){
