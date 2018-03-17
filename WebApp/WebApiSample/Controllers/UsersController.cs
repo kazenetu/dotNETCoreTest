@@ -168,6 +168,9 @@ namespace WebApiSample.Controllers
         if(fileData.FileName == string.Empty){
           return BadRequest();
         }
+        if(Path.GetExtension(fileData.FileName) != ".csv"){
+          return BadRequest();
+        }
 
         var fileName = string.Format("{0}_{1:yyyyMMddHHmmss}.{2}",
                           Path.GetFileNameWithoutExtension(fileData.FileName), 
@@ -191,6 +194,9 @@ namespace WebApiSample.Controllers
         var fileData = Request.Form.Files[0];
 
         if(fileData.FileName == string.Empty){
+          return BadRequest();
+        }
+        if(Path.GetExtension(fileData.FileName) != ".csv"){
           return BadRequest();
         }
 
