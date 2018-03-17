@@ -115,6 +115,10 @@
                         alert('ファイルを指定してください');
                         return;
                     }
+                    if(file.name.lastIndexOf('.csv') !== file.name.length-4 ){
+                        alert('CSVファイルを指定してください');
+                        return;
+                    }
 
                     var fd = new FormData();
                     fd.append('filename', document.getElementById('filenameJS').files[0]);
