@@ -110,6 +110,12 @@
                 }
 
                 this.upload = function () {
+                    var file = document.getElementById('filenameJS').files[0];
+                    if(file === undefined){
+                        alert('ファイルを指定してください');
+                        return;
+                    }
+
                     var fd = new FormData();
                     fd.append('filename', document.getElementById('filenameJS').files[0]);
 
