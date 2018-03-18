@@ -214,7 +214,11 @@ namespace WebApiSample.Controllers
         using(var sr = new StreamReader(fileData.OpenReadStream())){
           while(!sr.EndOfStream)
           {
-            fileResult.Add(sr.ReadLine());
+            var lineCells = sr.ReadLine().Split(",");
+            if(lineCells.Count() == 3)
+            {
+              fileResult.AddRange(lineCells);
+            }
           }
         }
 
