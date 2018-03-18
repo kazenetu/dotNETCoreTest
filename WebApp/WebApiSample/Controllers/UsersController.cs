@@ -62,7 +62,8 @@ namespace WebApiSample.Controllers
       data.Add(nameof(userName), userName);
 
       // 前回の戻り値を設定
-      if(HttpContext.Session.Keys.Contains(SessionKeyName)){
+      if (HttpContext.Session.Keys.Contains(SessionKeyName))
+      {
         data.Add("beforeValue", HttpContext.Session.GetString(SessionKeyName));
       }
       // セッションにユーザー名を設定
@@ -109,12 +110,14 @@ namespace WebApiSample.Controllers
 
       html.Append(@"<table style=""border-spacing:0px;width:100%;"">");
 
-      for(var index = 0;index < 10;index++){
+      for (var index = 0; index < 10; index++)
+      {
         html.Append("<tr>");
-        for(var colIndex = 0; colIndex<5;colIndex++){
+        for (var colIndex = 0; colIndex < 5; colIndex++)
+        {
           html.AppendFormat(@"<td style=""border-style:solid;border-width:1px;margin:0px;background-color:RGBA({0},{1},{2},255);"">",
-            colIndex*50,255,255);
-          html.AppendFormat("row{0}:col{1}",index,colIndex);
+            colIndex * 50, 255, 255);
+          html.AppendFormat("row{0}:col{1}", index, colIndex);
           html.Append("<br>日本語あいうえお");
           html.Append("</td>");
         }
@@ -131,7 +134,7 @@ namespace WebApiSample.Controllers
 
       var doc = new HtmlToPdfDocument()
       {
-          GlobalSettings = {
+        GlobalSettings = {
           ColorMode = ColorMode.Color,
           Orientation = Orientation.Landscape,
           PaperSize = PaperKind.A4Plus,
@@ -162,21 +165,24 @@ namespace WebApiSample.Controllers
     [HttpPost("upload")]
     public IActionResult Upload()
     {
-      if(Request.Form.Files.Any()){
+      if (Request.Form.Files.Any())
+      {
         var fileData = Request.Form.Files[0];
 
-        if(fileData.FileName == string.Empty){
+        if (fileData.FileName == string.Empty)
+        {
           return BadRequest();
         }
-        if(Path.GetExtension(fileData.FileName) != ".csv"){
+        if (Path.GetExtension(fileData.FileName) != ".csv")
+        {
           return BadRequest();
         }
 
         var fileName = string.Format("{0}_{1:yyyyMMddHHmmss}.{2}",
-                          Path.GetFileNameWithoutExtension(fileData.FileName), 
+                          Path.GetFileNameWithoutExtension(fileData.FileName),
                           DateTime.Now,
                           Path.GetExtension(fileData.FileName));
-        
+
         // ファイル名を設定
         fileName = HttpUtility.UrlEncode(fileName, System.Text.Encoding.UTF8);
         Response.Headers.Add("Content-Disposition", "attachment; filename=" + fileName);
@@ -190,32 +196,36 @@ namespace WebApiSample.Controllers
     [HttpPost("uploadJS")]
     public IActionResult UploadJS()
     {
-      if(Request.Form.Files.Any()){
+      if (Request.Form.Files.Any())
+      {
         var fileData = Request.Form.Files[0];
 
-        if(fileData.FileName == string.Empty){
+        if (fileData.FileName == string.Empty)
+        {
           return BadRequest();
         }
-        if(Path.GetExtension(fileData.FileName) != ".csv"){
+        if (Path.GetExtension(fileData.FileName) != ".csv")
+        {
           return BadRequest();
         }
 
         var fileName = string.Format("{0}_{1:yyyyMMddHHmmss}.{2}",
-                          Path.GetFileNameWithoutExtension(fileData.FileName), 
+                          Path.GetFileNameWithoutExtension(fileData.FileName),
                           DateTime.Now,
                           Path.GetExtension(fileData.FileName));
-        
+
         // ファイル名を設定
         fileName = HttpUtility.UrlEncode(fileName, System.Text.Encoding.UTF8);
         Response.Headers.Add("Content-Disposition", "attachment; filename=" + fileName);
 
         // ファイルの中身を取得する
         var fileResult = new List<string>();
-        using(var sr = new StreamReader(fileData.OpenReadStream())){
-          while(!sr.EndOfStream)
+        using (var sr = new StreamReader(fileData.OpenReadStream()))
+        {
+          while (!sr.EndOfStream)
           {
             var lineCells = sr.ReadLine().Split(",");
-            if(lineCells.Count() == 3)
+            if (lineCells.Count() == 3)
             {
               fileResult.AddRange(lineCells);
             }
