@@ -219,7 +219,7 @@ namespace WebApiSample.Controllers
         Response.Headers.Add("Content-Disposition", "attachment; filename=" + fileName);
 
         // ファイルの中身を取得する
-        var fileResult = new List<string>();
+        var fileResult = new List<List<string>>();
         using (var sr = new StreamReader(fileData.OpenReadStream()))
         {
           while (!sr.EndOfStream)
@@ -227,7 +227,7 @@ namespace WebApiSample.Controllers
             var lineCells = sr.ReadLine().Split(",");
             if (lineCells.Count() == 3)
             {
-              fileResult.AddRange(lineCells);
+              fileResult.Add(new List<string>(lineCells.ToList()));
             }
           }
         }
