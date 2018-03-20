@@ -111,11 +111,11 @@
 
                 this.upload = function () {
                     var file = document.getElementById('filenameJS').files[0];
-                    if(file === undefined){
+                    if (file === undefined) {
                         alert('ファイルを指定してください');
                         return;
                     }
-                    if(file.name.lastIndexOf('.csv') !== file.name.length-4 ){
+                    if (file.name.lastIndexOf('.csv') !== file.name.length - 4) {
                         alert('CSVファイルを指定してください');
                         return;
                     }
@@ -128,7 +128,16 @@
                         , function (response) {
                             var message = '';
                             for (key in response.value) {
-                                message += (key + "=" + response.value[key]);
+                                if (Array.isArray(response.value[key])) {
+                                    message += (key + "=\n");
+                                    var lines = response.value[key];
+                                    for (var lineKey in lines) {
+                                        message += '[' + lineKey + ']:[' + lines[lineKey] + "]\n";
+                                    }
+                                }
+                                else {
+                                    message += (key + "=" + response.value[key]);
+                                }
                                 message += "\n"
                             }
                             alert(message);
