@@ -16,6 +16,8 @@ using DinkToPdf;
 using System.Web;
 using DinkToPdf.Contracts;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Net;
 
 namespace WebApiSample.Controllers
 {
@@ -210,12 +212,22 @@ namespace WebApiSample.Controllers
         }
 
         // ファイルの中身を取得する
+        var isErrorFile = false;
         var fileResult = new List<List<string>>();
         using (var sr = new StreamReader(fileData.OpenReadStream()))
         {
-          while (!sr.EndOfStream)
+          while (!sr.EndOfStream && !isErrorFile)
           {
-            var lineCells = sr.ReadLine().Split(",");
+            var line = sr.ReadLine();
+
+            // 対象外の文字が設定されていれば対象外のファイルとみなす
+            if (new Regex(@"[\p{C}\p{So}]").IsMatch(line))
+            {
+              isErrorFile = true;
+              continue;
+            }
+
+            var lineCells = line.Split(",");
             if (lineCells.Count() == 3)
             {
               fileResult.Add(new List<string>(lineCells.ToList()));
@@ -224,7 +236,14 @@ namespace WebApiSample.Controllers
         }
 
         var data = new Dictionary<string, object>();
-        data.Add("result", "ok");
+        var resultStatus = "ok";
+        if (isErrorFile)
+        {
+          resultStatus = "ng";
+          fileResult.Clear();
+          fileResult.Add(new List<string>() { "対象外のファイルです" });
+        }
+        data.Add("result", resultStatus);
         data.Add("fileData", fileResult);
 
         var result = new Dictionary<string, Dictionary<string, object>>();
