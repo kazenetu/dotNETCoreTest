@@ -146,4 +146,4 @@ public IActionResult PDFDownload()
 - [GitHub DinkToPdf](https://github.com/rdvojmoc/DinkToPdf)
 
 
-[元に戻る](README.md)
+[READMEに戻る](README.md)

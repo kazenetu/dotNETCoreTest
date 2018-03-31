@@ -28,4 +28,4 @@ Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
 Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
 ```
 
-[元に戻る](README.md)
+[READMEに戻る](README.md)
