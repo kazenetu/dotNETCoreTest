@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Debug;
 using NLog.Web;
+using System.Reflection;
 
 namespace WebApiSample
 {
@@ -20,8 +21,14 @@ namespace WebApiSample
     {
       Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
       Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+
+      // カレントディレクトリの再設定
+      var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+      //Directory.SetCurrentDirectory(path);
+
       // NLog: setup the logger first to catch all errors
-      var logger = NLogBuilder.ConfigureNLog("NLog.config").GetCurrentClassLogger();
+      var configPath = Path.Combine(path,"NLog.config");
+      var logger = NLogBuilder.ConfigureNLog(configPath).GetCurrentClassLogger();
       try
       {
         logger.Debug("init main");
