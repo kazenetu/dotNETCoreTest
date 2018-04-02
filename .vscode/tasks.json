@@ -25,7 +25,7 @@
     },
     {
       "label": "buildWeb",
-      "command": "dotnet build ${workspaceFolder}/WebApp/WebApiSample/WebApiSample.csproj",
+      "command": "dotnet build ${workspaceFolder}/WebApp/WebApiSample/WebApiSample.csproj -o ${workspaceFolder}/WebApp/WebApiSample/bin/Debug/netcoreapp2.0",
       "type": "shell",
       "group": "build",
       "presentation": {
