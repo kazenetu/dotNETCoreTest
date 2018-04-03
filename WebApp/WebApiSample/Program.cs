@@ -22,11 +22,8 @@ namespace WebApiSample
       Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
       Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
 
-      // カレントディレクトリの再設定
-      var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-      //Directory.SetCurrentDirectory(path);
-
       // NLog: setup the logger first to catch all errors
+      var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
       var configPath = Path.Combine(path,"NLog.config");
       var logger = NLogBuilder.ConfigureNLog(configPath).GetCurrentClassLogger();
       try
