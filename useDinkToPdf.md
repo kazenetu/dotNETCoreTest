@@ -6,7 +6,7 @@
 
 ## 事前準備
 1. wkhtmltopdfのインストール
-   1. [https://wkhtmltopdf.org/downloads.html](https://wkhtmltopdf.org/downloads.html/)からOSと32bit・64bitを選択してダウンロード  
+   1. [https://wkhtmltopdf.org/downloads.html](https://wkhtmltopdf.org/downloads.html)からOSと32bit・64bitを選択してダウンロード  
    (Windowsの場合は「Windows(MinGW)」を選択)
    1. ダウンロードしたファイルを実行し、インストール
  1. wkhtmltopdfのbinフォルダにパスを通す
