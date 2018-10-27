@@ -30,9 +30,6 @@ namespace WebApiSample21
       // session
       services.AddSession(options =>
       {
-        // Set a short timeout for easy testing.
-        // options.IdleTimeout = TimeSpan.FromSeconds(10);
-        // options.Cookie.HttpOnly = true;
         options.Cookie.Name = Statics.SessionCookieName;
       });
     }
@@ -49,6 +46,7 @@ namespace WebApiSample21
         //app.UseHsts();
       }
 
+      // httpsを利用しない
       //app.UseHttpsRedirection();
 
       // session設定
